@@ -9,7 +9,7 @@ Made with Collab with [`Chetan Gupta`](https://chetangupta.net/about)
 
 I'm Android dev and in free time help in content editor at [`AndroidBites|Big-Brain-Kotlin`](https://chetangupta.net/)
 
-![TheDroidCoder](./droidcoder_pooja.jpg)
+![TheDroidCoder](./droidcoder_pooja_zoom.jpg)
 
 # :memo: TODO
 * UI improvements
