@@ -9,9 +9,9 @@ Made with Collab with [`Chetan Gupta`](https://chetangupta.net/about)
 
 I'm Android dev and in free time help in content editor at [`AndroidBites|Big-Brain-Kotlin`](https://chetangupta.net/)
 
-![AndroidBites](./androidbites_space.jpg)
+![TheDroidCoder](./droidcoder_pooja.jpg)
 
-# TODO
+# :memo: TODO
 * UI improvements
 * test cases
 
