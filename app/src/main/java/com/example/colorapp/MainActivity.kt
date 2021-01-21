@@ -2,95 +2,80 @@ package com.example.colorapp
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
+import android.widget.Button
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlin.random.Random
+import kotlin.random.nextInt
 
 class MainActivity : AppCompatActivity() {
 
-    private var colorList = mutableListOf<Color>()
-    private var nonSelectedColorList = mutableListOf<Color>()
-    private var count : Int = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
-        addColor()
-
-        colorSelection()
-
-        listener()
+        setupScene()
     }
 
-    fun addColor(){
+    private var score: Int = 0
+    private val colors = mutableListOf<Color>(
+        Color(colorName = "Aquamarine", color = R.color.Aquamarine),
+        Color(colorName = "Erin", color = R.color.Erin),
+        Color(colorName = "Magenta Rose", color = R.color.Magenta_rose),
+        Color(colorName = "Sangria", color = R.color.Sangria),
+        Color(colorName = "Sapphire", color = R.color.Sapphire),
+        Color(colorName = "Taupe", color = R.color.Taupe),
+        Color(colorName = "Ultramarine", color = R.color.Ultramarine),
+        Color(colorName = "Viridian", color = R.color.Viridian),
+        Color(colorName = "Black", color = R.color.black)
+    )
 
-        val color_arr = mutableListOf<Int>(
-            R.color.Aquamarine,
-            R.color.Erin,
-            R.color.Magenta_rose,
-            R.color.Sangria,
-            R.color.Sapphire,
-            R.color.Taupe,
-            R.color.Ultramarine,
-            R.color.Viridian,
-            R.color.black
-        )
+    fun setupScene() {
 
-        val color_Name = mutableListOf<String>(
-            "Aquamarine",
-            "Erin",
-            "Magenta_rose",
-            "Sangria",
-            "Sapphire",
-            "Taupe",
-            "Ultramarine",
-            "Viridian",
-            "black"
-        )
+        val randomIndex = Random.nextInt(0..colors.lastIndex)
+        val winColor = colors.get(randomIndex)
+        val wrongColors = colors.filter { it != winColor }
+            .shuffled()
+            .take(3)
+            .plus(winColor)
+            .shuffled()
 
-        for (i in 0 until color_Name.size) {
-            colorList.add(Color(color_Name[i], color_arr[i]))
+        container_color.setBackgroundResource(winColor.color)
+        btn_option1.text = wrongColors[0].colorName
+        btn_option2.text = wrongColors[1].colorName
+        btn_option3.text = wrongColors[2].colorName
+        btn_option4.text = wrongColors[3].colorName
+
+        btn_option1.setOnClickListener { checkWin(it as Button, winColor) }
+        btn_option2.setOnClickListener { checkWin(it as Button, winColor) }
+        btn_option3.setOnClickListener { checkWin(it as Button, winColor) }
+        btn_option4.setOnClickListener { checkWin(it as Button, winColor) }
+        btn_reset.setOnClickListener { resetGame() }
+    }
+
+    private fun checkWin(targetView: Button, displayColor: Color) {
+        val label = targetView.text.toString()
+        if (label == displayColor.colorName) {
+            score += 1
+            text_score.text = "Score : $score"
+            buttonClickStatus(isEnabled = true)
+            setupScene()
+        } else {
+            text_score.text = "GameOver : Score : $score"
+            buttonClickStatus(isEnabled = false)
         }
     }
 
-    private fun colorSelection(){
-        val size : Int = colorList.size
-        val currentColor = colorList.get(Random.nextInt(size))
-        iv_color.setBackgroundColor(resources.getColor(currentColor.color))
-        Log.d("*** current color = ", ""+currentColor.colorName)
-        colorList.forEach {
-            if (!it.colorName.equals(currentColor.colorName)){
-                nonSelectedColorList.add(it)
-            }
-        }
-
-        btn_option1.setText(currentColor.colorName)
-        btn_option2.setText(nonSelectedColorList.get(Random.nextInt(nonSelectedColorList.size)).colorName)
-        btn_option3.setText(nonSelectedColorList.get(Random.nextInt(nonSelectedColorList.size)).colorName)
-        btn_option4.setText(nonSelectedColorList.get(Random.nextInt(nonSelectedColorList.size)).colorName)
+    fun buttonClickStatus(isEnabled: Boolean) {
+        val buttons = listOf<Button>(btn_option1, btn_option2, btn_option3, btn_option4)
+        buttons.forEach { it.isEnabled = isEnabled }
     }
 
-    private fun listener(){
-        btn_option1.setOnClickListener {
-            ++count
-            tv_count.setText("Points : ${count}")
-            colorSelection()
-        }
-        btn_option2.setOnClickListener {
-            count = 0
-            tv_count.setText("Game Over")
-        }
-        btn_option3.setOnClickListener {
-            count = 0
-            tv_count.setText("Game Over")
-        }
-        btn_option4.setOnClickListener {
-            count = 0
-            tv_count.setText("Game Over")
-        }
 
-
+    private fun resetGame() {
+        score = 0
+        text_score.text = "Score : $score"
+        buttonClickStatus(isEnabled = true)
+        setupScene()
     }
 }
 
