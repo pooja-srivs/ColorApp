@@ -1,5 +1,6 @@
 <h1 align="center"><a href="https://github.com/pooja-srivs" target="_blank">Guess the Color!</a>
 </h1>
+
 ![TheDroidCoder](./droidcoder_pooja_zoom.jpg)
 
 ## :hand: About
@@ -9,6 +10,7 @@ more than a hello world!
 Made with Collab with [`Chetan Gupta`](https://chetangupta.net/about)
 
 I'm Android dev and in free time help in content editor at [`AndroidBites|Big-Brain-Kotlin`](https://chetangupta.net/)
+
 ![https://chetangupta.net](./android_bites.jpg)
 
 # :memo: TODO
