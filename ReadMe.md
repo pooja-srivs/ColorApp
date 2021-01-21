@@ -1,15 +1,15 @@
 <h1 align="center"><a href="https://github.com/pooja-srivs" target="_blank">Guess the Color!</a>
 </h1>
+![TheDroidCoder](./droidcoder_pooja_zoom.jpg)
 
 ## :hand: About
-Just a demo app for noobies to have a example of android app which is much
+Hello World! welcome to Guess the Color Repo, it's just a demo app for noobies to have a example of android app which is much
 more than a hello world!
 
 Made with Collab with [`Chetan Gupta`](https://chetangupta.net/about)
 
 I'm Android dev and in free time help in content editor at [`AndroidBites|Big-Brain-Kotlin`](https://chetangupta.net/)
-
-![TheDroidCoder](./droidcoder_pooja_zoom.jpg)
+![https://chetangupta.net](./android_bites.jpg)
 
 # :memo: TODO
 * UI improvements
